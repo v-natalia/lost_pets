@@ -1,0 +1,11 @@
+<div class="container">
+  <h2><%= @pet.name %></h2>
+  <p><%= @pet.address %></p>
+  <p><%= @pet.species %></p>
+  <p><%= @pet.found_on %></p>
+  <%= image_tag "https://source.unsplash.com/random/300x300/?#{@pet.species}", alt: @pet.name  %>
+  <br>
+  <%= link_to 'Edit', edit_pet_path(@pet) %>
+  <%= link_to 'Delete', pet_path(@pet), data: { turbo_method: :delete, turbo_confirm: 'Are u sure?'}  %>
+  <%= link_to 'Back', pets_path  %>
+</div>

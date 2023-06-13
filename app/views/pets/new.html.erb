@@ -1,0 +1,22 @@
+<div class="container">
+  <%= form_with model: @pet do |f| %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+    <%= f.label :species %>
+    <%= f.select :species, collection: Pet::SPECIES %>
+    <%= f.label :found_on %>
+    <%= f.date_field :found_on %>
+    <% #le code en bas je l'ai ajouté pour afficher les erreurs, vous verrez qu'avec simple_form(demain) c'est plus simple %>
+    <% if @pet.errors[:name].any? %>
+      <ul>
+        <% @pet.errors[:name].each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    <%= f.submit class: 'btn btn-success' %>
+  <% end %>
+</div>
